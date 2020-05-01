@@ -56,7 +56,8 @@ export const handler = async (
 }
 
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
-  // const token = getToken(authHeader)
+  const token = getToken(authHeader)
+  console.log(token)
   // const jwt: Jwt = decode(token, { complete: true }) as Jwt
 
   // TODO: Implement token verification
