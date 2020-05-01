@@ -87,3 +87,6 @@ function getToken(authHeader: string): string {
 
   return token
 }
+
+let p =  verifyToken("ahsgdudadjhgj");
+console.log(p)
