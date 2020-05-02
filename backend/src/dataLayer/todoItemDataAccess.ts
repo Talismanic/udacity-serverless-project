@@ -9,7 +9,7 @@ export class TodoItemAccess{
 
     constructor (
         private readonly docClient: DocumentClient = createDynamoDBClient(),
-        private readonly todoItemsTable = process.env.TODOITEMS_TABLE){
+        private readonly todoItemsTable = process.env.TODO_TABLE){
 
         }
 
