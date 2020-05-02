@@ -1,4 +1,5 @@
 import 'source-map-support/register'
+import {updateTodoItem} from '../../businessLogic/allTodos'
 
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
 
@@ -9,5 +10,12 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const updatedTodo: UpdateTodoRequest = JSON.parse(event.body)
 
   // TODO: Update a TODO item with the provided id using values in the "updatedTodo" object
-  return undefined
+  const result = await updateTodoItem(todoId, updatedTodo);
+  return {
+    statusCode: 202,
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    },
+    body: JSON.stringify(result)
+}
 }

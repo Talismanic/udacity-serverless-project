@@ -1,4 +1,5 @@
 import 'source-map-support/register'
+import { getSignedUrl } from '../../businessLogic/allTodos'
 
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
 
@@ -6,5 +7,15 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   const todoId = event.pathParameters.todoId
 
   // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
-  return undefined
+  const imageUrl = await getSignedUrl(todoId);
+  return {
+    statusCode: 202,
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    },
+    body: JSON.stringify({
+        uploadUrl: imageUrl.signedUploadUrl
+    })
+
+}
 }
