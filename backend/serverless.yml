@@ -5,6 +5,11 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
 
+
+package:
+exclude:
+- node_modules
+
 provider:
   name: aws
   runtime: nodejs12.x
