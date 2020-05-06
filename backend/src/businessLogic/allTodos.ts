@@ -15,6 +15,11 @@ export async function getAllTodoItems (userId: String): Promise<TodoItem[]>{
 
 export async function createTodoItem (userId: string, todoItem: CreateTodoRequest): Promise<TodoItem>{
   const todoId = uuid.v4();
+  console.log(todoId)
+  console.log(userId)
+  console.log(todoItem.name)
+  console.log(todoItem.dueDate)
+
   const todoItemAccess = new TodoItemAccess()
   return await todoItemAccess.createTodoItem(
     {
