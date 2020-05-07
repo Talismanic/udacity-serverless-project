@@ -11,12 +11,12 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
   // console.log('event:', event)
   logger.info('Received Event', event)
   
-  const userId = getUserId(event);
+  const userId =  getUserId(event);
   
   logger.info('Decoded User Id: ', userId)
   
-  const todos = await getAllTodoItems(userId)
-  logger.info('Received db data', todos)
+  const items = await getAllTodoItems(userId)
+  logger.info('Received db data', items)
   
 
   return {
@@ -25,7 +25,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
       'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({
-      todos
+      items
     })
   }
 

@@ -51,12 +51,13 @@ export class TodoItemAccess{
        await this.docClient.update({
             TableName: this.todoItemsTable,
             Key: {"todoId":todoId},
-            UpdateExpression: "set name = :name, dueDate= :dueDate, done= :done",
+            UpdateExpression: "set #name = :name, dueDate= :dueDate, done= :done",
             ExpressionAttributeValues:{
                 ":name": todoUpdate.name,
                 ":dueDate": todoUpdate.dueDate,
                 ":done": todoUpdate.done
             },
+            ExpressionAttributeNames: {"#name": "name"}, 
             ReturnValues: "UPDATED_NEW"
         }).promise()
 
