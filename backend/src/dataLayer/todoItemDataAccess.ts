@@ -76,7 +76,7 @@ export class TodoItemAccess{
 
     async imageUpload(todoId: string, imageId: string){
         const s3Bucket = process.env.S3_BUCKET
-        const urlExpiry = process.env.SIGNED_URL_EXPIRATION
+        const urlExpiry = 300   
 
         const s3 = new AWS.S3({
             signatureVersion: "v4"
